@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 96%;
+    --card: 222 40% 8%;
+    --card-foreground: 210 40% 96%;
+    --primary: 172 78% 48%;
+    --primary-foreground: 222 47% 6%;
+    --secondary: 222 32% 12%;
+    --secondary-foreground: 210 30% 90%;
+    --muted: 222 28% 12%;
+    --muted-foreground: 215 16% 58%;
+    --accent: 38 95% 55%;
+    --accent-foreground: 222 47% 6%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 152 60% 42%;
+    --warning: 38 92% 50%;
+    --border: 222 24% 16%;
+    --input: 222 24% 16%;
+    --ring: 172 78% 48%;
+    --radius: 0.75rem;
+    --glow: 172 78% 48%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: Manrope, system-ui, sans-serif;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 10% -10%, hsl(172 78% 48% / 0.12), transparent 55%),
+      radial-gradient(ellipse 60% 40% at 90% 0%, hsl(38 95% 55% / 0.08), transparent 50%),
+      linear-gradient(180deg, hsl(222 47% 5%) 0%, hsl(222 42% 4%) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: Syne, Manrope, sans-serif;
+  }
+
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply border-border/60 bg-card/70 backdrop-blur-xl supports-[backdrop-filter]:bg-card/55;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 40px hsl(var(--glow) / 0.35);
+  }
+
+  .grid-haze {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.45) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.45) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  }
+
+  .animate-rise {
+    animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-rise-delay {
+    animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+  }
+
+  .animate-rise-delay-2 {
+    animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+  }
+
+  .animate-scan {
+    animation: scan 8s linear infinite;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-20%);
+  }
+  100% {
+    transform: translateY(120%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-rise-delay,
+  .animate-rise-delay-2,
+  .animate-scan,
+  .animate-fade-in {
+    animation: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
