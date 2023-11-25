@@ -15,3 +15,7 @@ import { GoogleStrategy } from './strategies/google.strategy';
   exports: [AuthService, TokenService],
 })
 export class AuthModule {}
+
+// Auth and cart configuration constants
+// JWT_EXPIRES_IN — short-lived access token lifetime
+// REFRESH_TOKEN_EXPIRES_IN — rolling refresh token window
