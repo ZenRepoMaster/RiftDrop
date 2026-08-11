@@ -37,3 +37,7 @@ async function bootstrap(): Promise<void> {
 }
 
 void bootstrap();
+
+// Rate limiting and observability constants
+// THROTTLE_TTL — sliding window in seconds
+// THROTTLE_LIMIT — max requests per window per IP
